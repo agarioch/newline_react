@@ -3,24 +3,19 @@ class TimersDashboard extends React.Component {
     super(props);
 
     this.state = {
-      timers: [
-        {
-          title: "practice react",
-          project: "coding",
-          id: uuid.v4(),
-          elapsed: 5456099,
-          runningSince: Date.now(),
-        },
-        {
-          title: "practice d3",
-          project: "coding",
-          id: uuid.v4(),
-          elapsed: 1273998,
-          runningSince: null,
-        },
-      ],
+      timers: [],
     };
   }
+  componentDidMount() {
+    this.loadTimersFromServer();
+    setInterval(this.loadTimersFromServer, 5000);
+  }
+  loadTimersFromServer = () => {
+    client.getTimers((serverTimers) => {
+      this.setState({ timers: serverTimers });
+    });
+  };
+
   handleCreateFormSubmit = (timer) => {
     this.createTimer(timer);
   };
@@ -41,6 +36,7 @@ class TimersDashboard extends React.Component {
     this.setState({
       timers: this.state.timers.concat(t),
     });
+    client.createTimer(t);
   };
   startTimer = (id) => {
     const now = Date.now();
@@ -56,6 +52,7 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+    client.startTimer({ id, start: now });
   };
   stopTimer = (id) => {
     const now = Date.now();
@@ -73,6 +70,7 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+    client.stopTimer({ id, stop: now });
   };
   updateTimer = (attrs) => {
     this.setState({
@@ -87,12 +85,17 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+    client.updateTimer({
+      id: attrs.id,
+      title: attrs.title,
+      project: attrs.project,
+    });
   };
   deleteTimer = (id) => {
-    console.log("removing timer");
     this.setState({
       timers: this.state.timers.filter((t) => t.id !== id),
     });
+    client.deleteTimer({ id });
   };
   render() {
     return (
