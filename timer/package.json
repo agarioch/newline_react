@@ -2,6 +2,7 @@
   "name": "timers_app",
   "version": "1.1.0",
   "author": "Fullstack.io",
+  "homepage": "https://agarioch.github.io/newline_react/timers",
   "scripts": {
     "go": "open http://localhost:3000; npm run server",
     "e2e": "nightwatch; npm run reset-data;",
@@ -17,9 +18,7 @@
     ]
   },
   "private": true,
-  "prettier": {
-
-  },
+  "prettier": {},
   "dependencies": {
     "babel-cli": "6.22.2",
     "babel-core": "6.22.1",
@@ -30,6 +29,7 @@
     "path": "0.12.7"
   },
   "devDependencies": {
-    "concurrently": "2.2.0"
+    "concurrently": "2.2.0",
+    "gh-pages": "^2.2.0"
   }
 }
