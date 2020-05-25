@@ -23,7 +23,7 @@ module.exports = class extends React.Component {
     const person = this.state.fields;
 
     evt.preventDefault();
-
+    
     if (this.validate()) return;
 
     this.setState({
@@ -68,7 +68,7 @@ module.exports = class extends React.Component {
             name="name"
             value={this.state.fields.name}
             onChange={this.onInputChange}
-            validate={val => (val ? false : 'Name Required')}
+            validate={val => (val ? null : 'Name Required')}
           />
 
           <br />
@@ -78,7 +78,7 @@ module.exports = class extends React.Component {
             name="email"
             value={this.state.fields.email}
             onChange={this.onInputChange}
-            validate={val => (isEmail(val) ? false : 'Invalid Email')}
+            validate={val => (isEmail(val) ? null : 'Invalid Email')}
           />
 
           <br />

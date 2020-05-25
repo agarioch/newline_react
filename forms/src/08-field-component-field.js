@@ -15,16 +15,16 @@ module.exports = class extends React.Component {
     error: false
   };
 
-  getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     return {value: nextProps.value}
   }
 
   onChange = evt => {
     const name = this.props.name;
     const value = evt.target.value;
-    const error = this.props.validate ? this.props.validate(value) : false;
+    const error = this.props.validate ? this.props.validate(value) : null;
 
-    this.setState({value, error});
+    this.setState({error});
 
     this.props.onChange({name, value, error});
   };
