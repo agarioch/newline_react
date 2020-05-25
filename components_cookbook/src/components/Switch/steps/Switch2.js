@@ -4,16 +4,46 @@ import React from "react";
 const CREDITCARD = "Creditcard";
 const BTC = "Bitcoin";
 
+const Choice = ({active, onClick, label}) => {
+  const cssClasses = ['choice'];
+
+  if(active) {
+    cssClasses.push("active");
+  }
+
+  return(
+    <div className={cssClasses.join(' ')}
+    onClick={onClick}>
+      {label}
+    </div>
+  )
+}
+
 class Switch extends React.Component {
   state = {
     payMethod: BTC
   };
+  select = payment => {
+    return e => {
+      this.setState({
+        payMethod: payment
+      })
+    }
+  }
 
   render() {
     return (
       <div className="switch">
-        <div className="choice">Creditcard</div>
-        <div className="choice">Bitcoin</div>
+        <Choice 
+          onClick={this.select(CREDITCARD)}
+          label={CREDITCARD}
+          active={this.state.payMethod == CREDITCARD}
+        />
+        <Choice 
+          onClick={this.select(BTC)}
+          label={BTC}
+          active={this.state.payMethod == BTC}
+        />
         Pay with: {this.state.payMethod}
       </div>
     );

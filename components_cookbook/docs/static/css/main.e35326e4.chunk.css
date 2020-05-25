@@ -1,0 +1,2 @@
+$white:#fff;$yellow:#ff0;$green:green;.container{height:250px;overflow:auto;font-size:14px}.spreadsheet{tbody{td{border:1px solid #eee}input{border:0 solid #ccc;padding:2px;font-size:1.1em}}}.row{background:$white}.focusedRow{background:$yellow}.active{background-color:#d5fffb;font-weight:700}
+/*# sourceMappingURL=main.e35326e4.chunk.css.map */

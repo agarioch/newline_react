@@ -14,7 +14,7 @@ const modulesDir = join(rootDir, "node_modules");
 const buildDir = join(rootDir, "docs");
 const dataDir = join(rootDir, "fixtures");
 
-const ignore = ["Counter1", "CounterWrapper"];
+const ignore = ["Counter1", "CounterWrapper", "CounterWrapper2"];
 
 module.exports = {
   require: [path.resolve(__dirname, "lib/setup.js")],
