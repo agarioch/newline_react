@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "concurrently": "3.4.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "react-scripts": "1.1.1",
-    "concurrently": "3.4.0"
+    "react-test-renderer": "^16.13.1"
   },
   "dependencies": {
     "babel-plugin-transform-class-properties": "6.22.0",
@@ -14,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --verbose",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3001"
